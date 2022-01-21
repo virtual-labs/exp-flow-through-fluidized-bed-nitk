@@ -49,10 +49,10 @@ increase with increasing flow.
 
 <p style="text-indent: 30px; text-align: justify;">
 <center><img  src= "images/thf1.gif" style="width:629px;height:356px"></center></br>
-<center><img  src= "images/thf2.gif" style="width:618px;height:349px"></center></br>
+<center><img  src= "images/thf2.gif" style="width:618px;height:349px"></center>
 </p>
 
-##### Minimum fluidization velocity :
+#### Minimum fluidization velocity :
 <p style="text-indent: 30px; text-align: justify;">To better understand fluidization of a
 particle bed, it is necessary to determine what range of flow rates allow
 fluidization, and also, what flow rates will begin to carry the particles out the top of
@@ -75,19 +75,19 @@ solving the resultant quadratic equation.
 The Ergun equation can be used to describe the drag exerted on a particle bed by
 the fluid flow.
 The Ergun equation is</br>
-<center><img src="images/CodeCogsEqn (73).gif" style="width:177px;height:51px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------(1)</center></br></br>
+<center><img src="images/CodeCogsEqn (73).gif" style="width:177px;height:51px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------(1)</center></br>
 f<sub>p</sub> is the friction factor for a packed bed called as modified friction factor.</br>
-Where</br></br>
+Where,</br>
 <center><img src="images/CodeCogsEqn (74).gif" style="width:138px;height:45px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------(2)
 </center></br></br>
 
-With  <img src="images/CodeCogsEqn (75).gif" style="width:29px;height:12px">= the pressure drop</br>
-L= the height of the bed</br>
-<img src="images/CodeCogsEqn (47).gif" style="width:11px;height:12px">=the fluid viscosity</br>
-<img src="images/CodeCogsEqn (76).gif" style="width:7px;height:8px">=void fraction</br>
-V<sub>0</sub> = the fluid superficial velocity</br>
-D<sub>p</sub> =the particle diameter</br>
-<img src="images/CodeCogsEqn (46).gif" style="width:9px;height:12px">= the density of the fluid</br>
+With,  <img src="images/CodeCogsEqn (75).gif" style="width:29px;height:12px">= the pressure drop,</br>
+L= the height of the bed,</br>
+<img src="images/CodeCogsEqn (47).gif" style="width:11px;height:12px">=the fluid viscosity,</br>
+<img src="images/CodeCogsEqn (76).gif" style="width:7px;height:8px">=void fraction,</br>
+V<sub>0</sub> = the fluid superficial velocity,</br>
+D<sub>p</sub> =the particle diameter,</br>
+<img src="images/CodeCogsEqn (46).gif" style="width:9px;height:12px">= the density of the fluid,</br>
 <img src="images/CodeCogsEqn (77).gif" style="width:18px;height:12px"> = sphericity of the particle.</br>
 
 
@@ -105,7 +105,7 @@ V<sub>mf</sub>= Minimum fluidization velocity</br>
 The above equation is a quadratic in , where V<sub>mf</sub> , the minimum fluidization
 velocity.</p>
 
-##### Types of fluidization :
+#### Types of fluidization :
 
 <p style="text-indent: 30px; text-align: justify;">
 The equations derived for minimum fluidization velocity apply to liquids as
