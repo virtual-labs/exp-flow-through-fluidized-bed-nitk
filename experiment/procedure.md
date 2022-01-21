@@ -20,7 +20,6 @@ CCL<sub>4</sub> manometer, Hg manometer, bucket, Stop watch.
 Column Diameter = D = cm</br>
 Height of static bed = L<sub>mf</sub> =</br>
 Viscosity of fluid = <img src="images/CodeCogsEqn (47).gif" style="width:11px;height:12px"> = cp</br>
-
 Density of fluid = kg/m<sup>3</sup></br>
 Density of CCl<sub>4</sub> =&nbsp;&nbsp;&nbsp;&nbsp; kg/m<sup>3</sup></br>
 Density of Hg = &nbsp;&nbsp;&nbsp;kg/m<sup>3</sup></br>
