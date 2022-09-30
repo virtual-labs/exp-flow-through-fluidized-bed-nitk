@@ -1,0 +1,82 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Under fluidized condition, pressure drop across the bed ____________ with the superficial velocity?",
+      "answers": {
+        "a": "increases",
+        "b": "decreases",
+        "c": "remains constant"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": ""
+      },
+      "correctAnswer": "b",
+      "difficulty": ""
+    },
+    {
+      "question": "For calculation of particle Reynolds number ___________________________ is the characteristic dimension used?",
+      "answers": {
+        "a": "diameter of the column",
+        "b": "equivalent diameter of the particle",
+        "c": "none"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": ""
+      },
+      "correctAnswer": "a",
+      "difficulty": ""
+    },
+    {
+      "question": "Minimum fluidization velocity for a fluidized bed system depends on",
+      "answers": {
+        "a": "size, shape and density of particles alone",
+        "b": "density and viscosity of fluid",
+        "c": "Both size,shape and density of particles alone and density and viscosity of fluid"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": ""
+      },
+      "correctAnswer": "c",
+      "difficulty": ""
+    },
+    {
+      "question": "The height of a fluidized bed at incipient fluidization is 0.075 m, and the corresponding voidage is 0.38. If the voidage of the bed increases to 0.5, then the height of the bed would be",
+      "answers": {
+        "a": "0.058 m",
+        "b": "0.061 m",
+        "c": "0.075 m"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": ""
+      },
+      "correctAnswer": "a",
+      "difficulty": ""
+    },
+    {
+      "question": "A 1m high bed made up of 2mm particles is to be fluidised by an oil (density 900 kg/m3; viscosity 0.01 Pa s).  If at the point of incipient fluidisation, the bed voidage is 39% and the pressure drop across the bed is 10 kPa, then the density of particles is",
+      "answers": {
+        "a": "4350 kg/m3",
+        "b": "4000 kg/m3",
+        "c": "3514 kg/m3",
+        "d": "2571 kg/m3"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "d",
+      "difficulty": ""
+    }
+  ]
+}
