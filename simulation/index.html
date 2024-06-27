@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOLVE-Unit Operations Lab-Flow Through Fluidized Bed</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/query.css" />
+    <link rel="stylesheet" href="css/sgca.css" />
+    <link rel="stylesheet" href="css/mathstyle.css" />
+    <script type="text/javascript" src="js/jquerymin.js"></script>
+    <script src="./js/propeller.min.js"></script>
+    <!-- <script defer src="https://code.jquery.com/jquery.min.js"></script> -->
+    <script defer src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script defer src="https://code.jquery.com/ui/1.8.17/jquery-ui.min.js" ></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script defer type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script>
+      var simsubscreennum = 0;
+      var temp = 0;
+      var lnt = 0;
+      var n;
+    </script>
+    <script defer src="js/script.js"></script>
+    <!-- <script defer src="js/sgca.js"></script> -->
+  <!-- </head> -->
+  <body >
+    <!-- Logo -->
+    <!-- Experiment Title -->
+    <!-- Tools Sections -->
+    <!-- Tools Container -->
+    <!-- Simulation Container -->
+    <div class="title-div-container">
+      <div class="title-div">
+        <div class="logo-div">
+          <a href="#"><img src="images/logo_nitk.png" alt="Logo" class="logo" /></a>
+        </div>
+        <h1>Flow Through Fluidized Bed</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <ul class="tool-menu">
+          <div >
+          <li class="tool-list">
+            <a href="#simulation" class="tool-link" title="Simulation"  onclick="showFirstScreen()"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#089B93"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#ffffff"
+                class="icons"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8.25V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18V8.25m-18 0V6a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6zM7.5 6h.008v.008H7.5V6zm2.25 0h.008v.008H9.75V6z"
+                />
+              </svg>
+            </a>
+            <span>Simulation</span>
+          </li></div>
+
+          <div id="buttonsList" style="position: relative;display: none; " >
+          <li class="tool-list"   >
+            <a href="#variables" class="tool-link" title="Demo">
+              <img id="demoButton"  src="images/demoicon.png" alt="" class="icons"/>
+              </a
+              >
+              <span>Demo</span>
+          </li></div>
+
+          <div id="buttonsListEval" style="position: relative;display: none; " >
+            <li class="tool-list"   >
+              <a href="#variables" class="tool-link" title="Demo" 
+                >
+                <img id="demoButtonEval"  src="images/demoicon.png" alt="" class="icons"/>
+
+                </a
+                >
+                <span>Demo</span>
+            </li></div>
+
+          <div id="buttonsList1" style="position: relative;display: none;">
+          <li class="tool-list" >
+            <a  class="tool-link" title="Label" 
+              >
+              <img id="labelButton"  src="images/labelicon.png" alt="" class="icons"/>
+              
+              </a
+              >
+              <span>Label</span>
+          </li></div>
+
+          
+          <div id="buttonsListEval1" style="position: relative;display: none; " >
+            <li class="tool-list"   >
+              <a class="tool-link" title="Demo">
+                <img id="labelButtonEval"  src="images/dataicon.png" alt="" class="icons"/>
+                
+                </a
+                >
+                <span>Data</span>
+            </li></div>
+
+
+        <div id="buttonsList2" style="position: relative;display: none;">
+          <li class="tool-list" >
+            <img id="setupButton"  src="images/setup.png" alt="" class="icons"/>
+            <!-- <button id="setupButton" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Setup</b></button> -->
+            <span class="playPause">Setup</span>
+          </li>
+        </div>
+
+        <div id="buttonsListEval2" style="position: relative;display: none; " >
+          <li class="tool-list"   >
+            <a href="#variables" class="tool-link" title="Demo">
+              <img id="setupButtonEval"  src="./images/evalicon.png" alt="" class="icons"/>
+              </a
+              >
+              <span>Evaluation</span>
+          </li></div>
+
+      <div id="buttonsList3" style="position: relative;display: none;">
+          <li class="tool-list" >
+            <img id="expButton"  src="./images/expicon.png" alt="" class="icons"/>
+            <!-- <button id="expButton" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Experiment</b></button> -->
+            <span>Experiment</span>
+          </li>
+        </div>
+        </ul>
+      </div>
+      <div class="main">
+        <div class="main-section">
+          <div id="simulation" class="main__task-div">
+            <h3 class="task-title">Simulation</h3>
+            <div id="canvas-container">
+              <!-- <div id="simscreen"> -->
+
+                <!--Title of Simulation		-->
+                <div id="titleLarge" class="title" style="visibility: visible;">
+                    <h3>Flow Through Fluidized Bed</h3>
+                </div>
+               
+                <!--SubScreen Home	-->
+                <div class="simsubscreen" id="canvas0" style="background-color: white; border:2px solid rgb(8, 195, 185);">
+        
+                    <p id="start"  >Department of Chemical engineering NITK presents...</p>
+                    <!-- <p id="start1" >FLOW THROUGH VENTURI</p> -->
+                    <p id="landingPageButton" ><b>CONTINUE..</b></p>
+                </div>
+        
+                <!--Step1	-->
+                <div class="simsubscreen" id="canvas1" style="visibility:hidden">
+                    <!-- <strong id="titlestep" class="incanvas">STEP </strong>
+        <span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span> -->
+                    <p id="pumptext" class="steptext" >What would you like to do.</p>
+        
+                    <!-- <p style="position: absolute; top:60px; left: 170px; font-size:20px;"><b>What would you like to do?</b></p> -->
+                    <div class="button-container">
+                    <button onclick="selectAction(1)" class="action-button" >Perform experiment</button>
+                    <button onclick="selectAction(2)" class="action-button" >Evaluate yourself</button>
+                  </div>
+                    <!-- <img id="" style="position: absolute; left: 430px; top: 255px;" src="images/ewm.png"/> -->
+                    <!-- <img id="a4" style="position: absolute; left: 520px; top: 50px;visibility:hidden;" src="images/1.12.png"/> -->
+                    <!-- <p id="can1" style="position:absolute;top: 450px; left:28px; font-family:verdana; font-size:14px;"></p> -->
+                    <p id="v1" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
+        
+                </div>
+        
+                <!-- ADDITIONAL STEP ADDED -->
+                <div class="simsubscreen" id="canvas5" style="visibility:hidden">
+                  <div id="titleSmall" class="title2" style="visibility:hidden">
+                    
+                    <!-- <h3 id="ftfmotion" onmouseenter="goToStart(this.id);" onmouseleave="changeOriginal(this.id);">Flow through </h3> -->
+                    <h3 id="ftfmotion" onmouseenter="goToStart(this.id);" onmouseleave="changeOriginal(this.id);" style="font-size: 12px;position: relative; color: hsl(180deg 12.99% 30.2%);top: -37px;
+                    left: -40px;z-index: 101;width: 100%;background-color: white;height: 87%;">Flow through Fluidized Bed</h3>
+                </div>
+                    <p class="step5p" >VIRTUAL LAB @ NITK</p>
+        
+                </div>
+        
+                <div class="simsubscreen" id="canvas6" style="visibility:hidden">
+                  
+        
+                    <div id="demoOne" >
+                      <ul>
+                        <li>
+                            Click on <span class="fontColorChange">Label</span> Tab to see the Experimental Setup.
+                        </li>
+                        <li>
+                            Click on <span class="fontColorChange">Setup</span> Tab to Configure Experimental Setup.
+                        </li>
+                        <li>
+                            Now click on <span class="fontColorChange">Experiment</span> Tab to perform the experiment.
+                        </li>
+                        <li>
+                            To start the experiment first <span class="fontColorChange">switch ON</span> the pump by clicking the <span class="fontColorChange">Green</span> button on the pump.
+                        </li>
+                        <li>
+                            Once the pump is turned on <span class="fontColorChange">Setup</span> Tab will be disabled and will be enabled only if pump is OFF. Click on <span class="fontColorChange">Red</span> button on pump to <span class="fontColorChange">Switch off </span>the
+                            pump.
+                        </li>
+                        <li>
+                            To set the required flowrate click on the <span class="fontColorChange">Main valve </span>and drag in AntiClockwise direction for opening Valve and Clockwise direction for closing the Valve.
+                        </li>
+                        <li>
+                            Note the change in limb level of manometer. <span class="fontColorChange">h1</span> and <span class="fontColorChange">h2</span> are curresponding Manometric Limb heights from reference level.
+                        </li>
+                        <li>
+                            Click on <span class="fontColorChange">Add current readings</span> button to record the reading in Observation Table.
+                        </li>
+                        <li>
+                            Click on <span class="fontColorChange">Observations</span> button to see the Observation table. Click again on hide the Table.
+                        </li>
+                        <li>
+                            Click on <span class="fontColorChange">Experimental Data </span> button to see the Experimental Data's. Click again on hide.
+                        </li>
+                        <li>
+                            If you get Manometric Overflow Error, go to <span class="fontColorChange">Setup </span>Tab and Change the Manometer.
+                        </li>
+                        <li>
+                            To Evaluate experiment click on title <span class="fontColorChange">Flow Through Flow through Fluidised Bed</span>.
+                        </li>
+                    </ul>
+                    </div>
+        
+                    <div id="demoTwo" >
+                        <ul>
+                            <li>
+                                Click on <span class="fontColorChange">Data</span> tab to configure Experimental data.
+                            </li>
+                            <li>
+                                Click on <span class="fontColorChange">Observation</span> tab to Enter your Observations. Specify number of sets of readings.
+                            </li>
+                            <li>
+                                Click on <span class="fontColorChange">Evaluate</span> button to see the <span class="fontColorChange">Results</span>.
+                            </li>
+                            <li>
+                                To perform experiment again click on the <span class="fontColorChange">Flow Through Fluidized Bed</span>.
+                            </li>
+                        </ul>
+                    </div>
+        
+                </div>
+        
+                <!--Step2	-->
+        
+                <div class="simsubscreen" id="canvas2" style="visibility:hidden; color: #1981e2; font-style: italic; font-size: large; ">
+        
+                    <!-- <strong id="titlestep" class="incanvas">STEP &nbsp;</strong>
+        <span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span> -->
+                    <!-- <p id="step2Heading" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Details</p> -->
+                    <!-- EXPERIMENT PART -->
+                    <div class="image-container">
+                    <img id="labelImage"  src="./images/Flow_through_pipes_images/ftfblabel1.png"></div>
+        
+                    <!-- Evaluation part -->
+                    <!-- <div style="display: flex; justify-content: center;"> -->
+                      
+<div style="display: flex; justify-content: center;margin-top: -505px;">
+  <div id="configExp" style="visibility: hidden; display: grid;
+                        flex-direction: column;
+                        /* align-items: flex-start; */
+                        margin-top: 128px;
+                        gap: 5px;
+                        color: black;
+                        padding: 0px 2px 0px 11px;
+                        grid-template-columns: 1fr 0.5fr 43px">
+                            <p style="margin-bottom: 10px; text-align: left;">Nominal diameter of the pipe:
+                                <span></span>
+                                
+                            </p>
+                            <select name="pipeDia" id="pipeDiaSelectEval" onchange="setPipeDiaEval();" style="border-radius: 5px;
+                            height: 29px;
+                            width: 182px;
+                            padding-left: 5px;">
+                                <option value="1.00">1.00 inch</option>
+                                <option value="1.50">1.50 inch</option>
+                                <option value="2.50">2.50 inch</option>
+                          </select>
+                          <span></span>
+                            <p style="margin-bottom: 10px; text-align: left;">Length of Fluidised Bed:
+                                <!-- <span style="margin-right: 5px;"></span> -->
+                               
+                            </p>
+                            <input style="border-radius: 5px;
+                            height: 29px;
+                            width: 182px;
+                            padding-left: 5px;" type="number" step="0.1" value="0.5" id="bedLengthEval" name="length" min="0.5" max="2.0" onchange="setbedHeightEval();">
+                            <!-- <select name="pipeDia" id="pipeDiaSelectEval" onchange="setPipeDiaEval();" style="border-radius: 5px;
+                            height: 29px;
+                            padding-left: 5px;">
+                              <option value="0.25">0.25 inch</option>
+                                  <option value="0.50">0.50 inch</option>
+                                  <option value="1.00">1.00 inch</option>
+                                  <option value="1.50">1.50 inch</option>
+                          </select> -->
+                            <!-- <input type="number" step="0.1" value="0.3" id="venturiDiaEval" name="length" min="0.1" max="0.7" onchange="setVenturiDiaEval();" style="border-radius: 5px;
+      height: 29px;
+      padding-left: 5px;"> -->
+                            <span >cm</span>
+                            <p style="margin-bottom: 10px; text-align: left;">Packing material:
+                             
+                            </p>
+                            <select name="packingMaterial" id="packMatSelect" onchange="setpackMaterialEval();"  style="border-radius: 5px;
+      height: 29px;
+      width: 182px;
+      padding-left: 5px;">
+                             <option value="Glass beads of 4mm size">Glass beads of 4mm size</option>
+                             <option value="Glass beads of 6mm size">Glass beads of 6mm size</option>
+                          </select>
+                          <span></span>
+                            <p style="margin-bottom: 10px; text-align: left;">Process fluid:
+                               
+                            </p>
+                            <select name="processFluid" id="processFluidEval" onchange="setProcessFluidEval();"  style="border-radius: 5px;
+      height: 29px;
+      width: 182px;
+      padding-left: 5px;">
+                               <option value="Water">Water</option>
+                                  <option value="Kerosene">Kerosene</option>
+                          </select>
+                          <span></span>
+                            <p style="margin-bottom: 10px; text-align: left;">Manometric fluid:
+                               
+                            </p>
+                            <select name="manoFluid" id="manoFluidEval" onchange="setManoFluidEval();" style="border-radius: 5px;
+      height: 29px;
+      width: 182px;
+      padding-left: 5px;">
+                               <option value="Carbon tetrachloride">Carbon tetrachloride</option>
+                                  <option value="Mercury">Mercury</option>
+                          </select>
+                          
+                            
+    </div></div>
+                  <!-- </div> -->
+        
+                    <p id="v2" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
+        
+                </div>
+        
+                <!--Step3	-->
+                <div class="simsubscreen" id="canvas3" style="visibility:hidden; color: white; font-style: italic; font-size: large; ">
+
+                    <div style="display: flex; justify-content: center;  ">
+                      <div id="experimentSetup" style="visibility: hidden; display: grid;
+                      flex-direction: column;
+                      /* align-items: flex-start; */
+                      margin-top: 128px;
+                      gap: 5px;
+                      color: black;
+                      padding: 0px 2px 0px 11px;
+                      grid-template-columns: 1fr 0.5fr 43px">
+                          <p style="margin-bottom: 10px; text-align: left;">Length of the Fluidized bed:
+                              <span></span>
+                              
+                          </p>
+                          <!-- <input type="number" step="0.1" value="0.5" id="venturiDia" name="length" min="0.5" max="2.0" onchange="setPBLength()" style="border-radius: 5px;
+    height: 29px;
+    padding-left: 5px;"> -->
+    <p id="pbLength" style="font-size: 15px;">2.5 meter</p>
+
+                        <span ></span>
+                        
+                          <p style="margin-bottom: 10px; text-align: left;">Nominal diameter of the pipe:
+                              <span style="margin-right: 5px;"></span>
+                             
+                          </p>
+                          <select name="pipeDia" id="pipeDiaSelect" onchange="setPBDia();;" style="border-radius: 5px;
+                          height: 29px;
+                          width: 182px;
+                          padding-left: 5px;">
+                            <option value="0.25">1.00 inch</option> inch</option>
+                            <option value="0.50">1.50 inch</option>
+                            <option value="1.00">2.50 inch</option>
+                            
+                        </select>
+                          <span ></span>
+                          <p style="margin-bottom: 10px; text-align: left;">Static Bed Height:
+                             
+                          </p>
+                          <input type="number" step="0.1" value="0.3" id="venturiDia" name="length" min="0.3" max="1.2" onchange="setPBLength()" style="border-radius: 5px;
+    height: 29px;
+    width: 182px;
+    padding-left: 5px;">
+    <span style="font-size: 15px;">meter</span>
+    <p style="margin-bottom: 10px; text-align: left;">Packing Material:
+                             
+    </p>
+                          <select name="packingMaterial" id="packMatSelect" onchange="setPBMaterial();"  style="border-radius: 5px;
+    height: 29px;
+    width: 182px;
+    padding-left: 5px;">
+                            <option value="Glass beads of 4mm size">Glass beads of 4mm size</option>
+                            <option value="Glass beads of 6mm size">Glass beads of 6mm size</option>
+                        </select>
+                        <span></span>
+                          <p style="margin-bottom: 10px; text-align: left;">Process fluid:
+                             
+                          </p>
+                          <select name="processFluid" id="processFluid" onchange="setProcessFluid();" style="border-radius: 5px;
+    height: 29px;
+    width: 182px;
+    padding-left: 5px;">
+                            <option value="Water">Water</option>
+                            <option value="Kerosene">Kerosene</option>
+                        </select>
+                        <span></span>
+                          <p style="margin-bottom: 10px; text-align: left;">Manometric fluid:
+                              
+                          </p>
+                          <select name="manoFluid" id="manoFluid" onchange="setManoFluid();" style="border-radius: 5px;
+    height: 29px;
+    width: 182px;
+    padding-left: 5px;">
+                            <option value="Carbon tetrachloride">Carbon tetrachloride</option>
+                            <option value="Mercury">Mercury</option>
+                        </select>
+                        <span></span>
+                      </div>
+                  </div>
+                  
+                    <!-- Evaluation Part -->
+                    <div id="evaluatePart" style="position: absolute; top: 58px;">
+                      <div style="color: #fff;">
+                          <p style="display: inline-block;color: black;">Number of sets of readings:
+                              <input type="number" value="0" id="evalSets" name="length" min="2" max="20" onchange="setEvalSets();" style="width: 100px;">
+                          </p>
+                         
+                          <button style="display: inline-block;" id="eval" onclick="evaluateConfig();">EVALUATE</button>
+                          <p id="errorMessage" style="position: relative; top: -2px; color: red; display: none;font-size: 15px;">Please enter the number</p>
+                          
+                      </div>
+                      <div class="table-container">
+                          <table id="configInputTable"> 
+                              <thead>
+                                  <tr>
+                                      <!-- <th>Sl no.</th> -->
+                                      <th>Flowrate(lpm)</th>
+                                      <th>Manometric Pressure drop</th>
+                                      <th>Reynolds no.</th>
+                                      <th>Co-efficient of Discharge</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Table content here -->
+                              </tbody>
+                          </table>
+                  
+                          <table id="configResultTable">
+                              <thead>
+                                  <tr>
+                                      <th>Reynolds no.</th>
+                                      <th>Friction Factor x 10<sup>4</sup></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Table content here -->
+                              </tbody>
+                          </table>
+                      </div>
+                  
+                      <p id="showResRey"></p>
+                      <p id="showResInFric"></p>
+                  </div>
+                  
+                  
+        
+                    <p id="can3" style="position:absolute;top: 450px; left:28px;font-family:verdana; font-size:14px;"></p>
+                    <p id="v3" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
+                </div>
+        
+        
+                <!--Step4	-->
+                <div class="simsubscreen" id="canvas4" style="visibility:hidden">
+                    <!-- <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;4&nbsp;</span> -->
+                    <p id="step4Heading" class="steptext" style="font-family:verdana; font-size:14px;"></p>
+                    <!-- EXPERIMENT PART -->
+                    <div class="main-container2">
+                      <div id="experimentID" style="visibility: hidden;">
+                        <img style="position: absolute; top: 50px; left: 90px; width: 650px; height: 450px;" src="./images/Flow_through_pipes_images/setup.png">
+                        <img style="position: absolute; top: 165px; left: 565px; width: 90px; height: 220px;" src="./images/Flow_through_pipes_images/firstWire.png">
+                        <img style="position: absolute; top: 98px; left: 455px; width: 200px; height: 105px;" src="./images/Flow_through_pipes_images/secondWire.png">
+                        <img id="gatewayRotate" style="position: absolute; top: 281px; left: 252px; width: 40px; height: 40px;z-index: 10;" src="./images/Flow_through_pipes_images/gatewall.png">
+                        <img style="position: absolute; top: 320px; left: 202px; width: 40px; height: 40px;" src="./images/Flow_through_pipes_images/gatewall.png">
+                        <img id="greenColor" style="position: absolute; top: 405px; left: 329px; width: 18px; height: 18px; cursor: pointer; " src="./images/Flow_through_pipes_images/green.png">
+                        <img id="redColor" style="position: absolute; top: 405px; left: 329px; width: 18px; height: 18px; cursor: pointer; visibility: hidden;" src="./images/Flow_through_pipes_images/red.png">
+                        <img style="position: absolute; top: 135px; left: 234px; width: 73px; height: 143px; z-index: 1;" src="./images/Flow_through_pipes_images/top.png">
+                        <img style="position: absolute; top: 52px; left: 150px; width: 528px; height: 11.5px;" src="./images/Flow_through_pipes_images/straightPipe.png">
+                        <img style="position: absolute; top: 430.5px; left: 413.8px; width: 262px; height: 12px;" src="./images/Flow_through_pipes_images/straightPipe.png">
+                        <img style="position: absolute; top: 171px; left: 30px; width: 193.5px; height: 12px; transform: rotate(270deg);" src="./images/Flow_through_pipes_images/straightPipe.png">
+                        <img style="position: absolute; top: 102px; left: 291px; width: 77.5px; height: 11px; transform: rotate(0deg);" src="./images/Flow_through_pipes_images/straightPipe.png">
+                        <img style="position: absolute; top: 171px; left: 30px; width: 193.5px; height: 12px; transform: rotate(270deg);" src="./images/Flow_through_pipes_images/straightPipe.png">
+        
+                        <img style="position: absolute; top: 400px; left: 690px; width: 17px; height: 13px; transform:rotate(90deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 165px; left: 480px; width: 102px; height: 120px;" src="./images/Flow_through_pipes_images/fullU.png">
+                        <img style="position: absolute; top: 362px; left: 265.5px; width: 13.5px; height:12.5px; transform:rotate(270deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 267px; left: 249px; width: 285px; height: 12.5px; transform:rotate(270.5deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 206px; left: 460.5px; width: 95px; height: 14px; transform:rotate(90deg);" src="./images/Flow_through_pipes_images/blacklong.png">
+                        <img style="position: absolute; top: 206px; left: 506px; width: 95px; height: 14px; transform:rotate(90deg);" src="./images/Flow_through_pipes_images/blacklong.png">
+        
+        
+                        <img style="position: absolute; top: 362px; left: 265.5px; width: 13.5px; height:12.5px; transform:rotate(270deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 372px; left: 646px; width: 15px; height:5px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 109px; left: 652px; width: 10px; height:5px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 401px; left: 199px; width: 34px; height:34px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/topleft.png">
+        
+        
+                        <!-- Fluid initial -->
+                        <img id="bottomU" style="position: absolute; top: 255px; left: 500px; width: 63px; height: 34px; transform: rotate(0deg); " src="./images/Flow_through_pipes_images/botomU.png">
+                        <img id="leftFluid" style="position: absolute; top: 222px; left: 500px; width: 15px; height: 37px; transform: rotate(0deg); " src="./images/Flow_through_pipes_images/aboveU.png">
+                        <img id="rightFluid" style="position: absolute; top: 222px; left: 548px; width: 15px; height: 37px; transform: rotate(0deg); " src="./images/Flow_through_pipes_images/aboveU.png">
+        
+                        <!-- Fluid initial Pink -->
+                        <img id="bottomPinkU" style="position: absolute; top: 254px; left: 501px; width: 62px; height: 34px; transform: rotate(0deg); " src="./images/Flow_through_pipes_images/pinkbottomU.png">
+                        <img id="leftPinkFluid" style="position: absolute; top: 222px; left: 501px; width: 15px; height: 37px; transform: rotate(0deg); " src="./images/Flow_through_pipes_images/pinkFluid.png">
+                        <img id="rightPinkFluid" style="position: absolute; top: 222px; left: 548px; width: 15px; height: 37px; transform: rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+        
+                        <!-- Fluid Second -->
+                        <img id="leftFluidSecond" style="visibility: hidden; position: absolute; top: 215.6px; left: 332px; width: 14px; height: 43.4px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+                        <img id="rightFluidSecond" style="visibility: hidden; position: absolute; top: 229.2px; left: 381px; width: 14px; height: 29.6px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+        
+                        <!-- Fluid Second Pink-->
+                        <img id="leftPinkFluidSecond" style="visibility: hidden; position: absolute; top: 215.6px; left: 332px; width: 14px; height: 43.4px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+                        <img id="rightPinkFluidSecond" style="visibility: hidden; position: absolute; top: 229.2px; left: 381px; width: 14px; height: 29.6px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+        
+                        <!-- Fluid Third -->
+                        <img id="leftFluidThird" style="visibility: hidden; position: absolute; top: 209.2px; left: 332px; width: 14px; height: 49.8px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+                        <img id="rightFluidThird" style="visibility: hidden; position: absolute; top: 236.4px; left: 381px; width: 14px; height: 22.2px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+        
+                        <!-- Fluid Third Pink-->
+                        <img id="leftPinkFluidThird" style="visibility: hidden; position: absolute; top: 209.2px; left: 332px; width: 14px; height: 49.8px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+                        <img id="rightPinkFluidThird" style="visibility: hidden; position: absolute; top: 236.4px; left: 381px; width: 14px; height: 22.2px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+        
+                        <!-- Fluid Fourth -->
+                        <img id="leftFluidForth" style="visibility: hidden; position: absolute; top: 202.8px; left: 332px; width: 14px; height: 56.2px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+                        <img id="rightFluidForth" style="visibility: hidden; position: absolute; top: 243.6px; left: 381px; width: 14px; height: 14.8px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+        
+                        <!-- Fluid Fourth Pink-->
+                        <img id="leftPinkFluidForth" style="visibility: hidden; position: absolute; top: 202.8px; left: 332px; width: 14px; height: 56.2px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+                        <img id="rightPinkFluidForth" style="visibility: hidden; position: absolute; top: 243.6px; left: 381px; width: 14px; height: 14.8px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+        
+                        <!-- Fluid Fifth -->
+                        <img id="leftFluidFifth" style="visibility: hidden; position: absolute; top: 196.4px; left: 332px; width: 14px; height: 62.6px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+                        <img id="rightFluidFifth" style="visibility: hidden; position: absolute; top: 250.8px; left: 381px; width: 14px; height: 7.4px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+        
+                        <!-- Fluid Fifth Pink-->
+                        <img id="leftPinkFluidFifth" style="visibility: hidden; position: absolute; top: 196.4px; left: 332px; width: 14px; height: 62.6px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+                        <img id="rightPinkFluidFifth" style="visibility: hidden; position: absolute; top: 250.8px; left: 381px; width: 14px; height: 7.4px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+        
+                        <!-- FLUID FINAL -->
+                        <img id="leftFluidFinal" style="visibility: hidden; position: absolute; top: 190px; left: 332px; width: 14px; height: 69px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+                        <img id="rightFluidFinal" style="visibility: hidden; position: absolute; top: 258px; left: 381px; width: 14px; height: 0px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/aboveU.png">
+                        <!-- FLUID PINK FINAL -->
+                        <img id="leftPinkFluidFinal" style="visibility: hidden; position: absolute; top: 190px; left: 332px; width: 14px; height: 69px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+                        <img id="rightPinkFluidFinal" style="visibility: hidden; position: absolute; top: 258px; left: 381px; width: 14px; height: 0px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pinkFluid.png">
+        
+                        <img style="position: absolute; top: 403.8px; left: 233px; width: 21px; height: 11px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 446px; left: 187px; width: 35px; height: 11px; transform:rotate(90deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img style="position: absolute; top: 375.5px; left: 160.5px; width: 24px; height: 11.5px; transform:rotate(270deg);" src="./images/Flow_through_pipes_images/smallPiece.png">
+        
+        
+                        <img style="position: absolute; top: 213px; left: 572px; width:256px; height: 60px; transform:rotate(270deg);opacity: 0.7;" src="./images/Flow_through_pipes_images/smallPiece.png">
+                        <img id="fluBed" style="position: absolute; top: 340px; left: 670px; width: 60px; height: 30px;  " src="./images/Flow_through_pipes_images/196.png">
+        
+                        <!-- Pin initial-->
+                        <img id="rotatePin" style="visibility: hidden; position: absolute; top: 240px; left: 261px; width: 17px; height: 32px; transform: rotate(0deg);" src="./images/Flow_through_pipes_images/pin.png">
+                        <!-- Pin Second-->
+                        <img id="rotatePinSecond" style="visibility: hidden; position: absolute; top: 245px; left: 261px; width: 17px; height: 32px; transform:rotate(0deg); " src="./images/Flow_through_pipes_images/pin.png">
+                        <!-- Pin Third-->
+                        <img id="rotatePinThird" style="visibility: hidden; position: absolute; top: 231px; left: 261px; width: 17px; height: 32px; transform:rotate(0deg);" src="./images/Flow_through_pipes_images/pin.png">
+                        <!-- Pin Forth-->
+                        <img id="rotatePinForth" style="visibility: hidden; position: absolute; top: 217px; left: 261px; width: 17px; height: 32px; transform:rotate(0deg); " src="./images/Flow_through_pipes_images/pin.png">
+                        <!-- Pin Fifth-->
+                        <img id="rotatePinFifth" style="visibility: hidden; position: absolute; top: 203px; left: 261px; width: 17px; height: 32px; transform:rotate(0deg); " src="./images/Flow_through_pipes_images/pin.png">
+        
+                        <!-- Pin final-->
+                        <img id="rotatePinFinal" style="visibility: hidden; position: absolute; top: 189px; left: 261px; width: 17px; height: 32px; transform:rotate(0deg); " src="./images/Flow_through_pipes_images/pin.png">
+        
+        
+                        <img id="waterSteady" style="position: absolute; top: 450.5px; left: 104.5px; width: 132px; height: 38px; transform: rotate(0deg);" src="./images/Flow_through_pipes_images/waterSteady.png">
+                        <img id="waterFlow" style="position: absolute; visibility: hidden; top: 452px; left: 105px; width: 132px; height: 38px; transform: rotate(0deg);" src="./images/Flow_through_pipes_images/waterFlow.svg">
+                        <!-- Water flowing out of pipe. -->
+                        <img id="waterPourFirst" style="visibility: hidden; position: absolute; top: 388px; left: 112px; width: 115px; height: 80px; transform: rotate(0deg);" src="./images/Flow_through_pipes_images/waterPng.png">
+                        <img id="waterPourSecondLongOne" style="visibility: hidden; position: absolute; top: 258.5px; left: 70px; width: 110px; height: 218px; transform: rotate(0deg);" src="./images/Flow_through_pipes_images/waterPng.png">
+        
+        
+                        <!-- INFORMATION -->
+                        <p style="position: absolute; top: 511px; left: 362px; width: 53px; font-size:16px; color: #000;"><b>NOTE:</b></p>
+                        <p id="infoAboutWhatToDo" style="position: absolute; top: 511px; left: 415px; width: 300px; font-size: 16px; color: white;"></p>
+        
+        
+                        <p style="position: absolute; top: 195px; left: 150px; width: 124px; color: #000;">ROTAMETER READING:</p>
+                        <p id="ratoReadings" style="position: absolute; top: 235px; left: 150px; width: 124px; color: #000;">00.00</p>
+                        <p style="position: absolute; top: 235px; left: 189px; width: 124px; color: #000;">LPM</p>
+        
+                        <p style="position: absolute; top: 195px; left: 452px; width: 124px; font-size:16px; color: #000;">h1:</p>
+                        <p id="leftCm" style="position: absolute; top: 215px; left: 435px; width: 124px; font-size:16px; color: #000;">35.00</p>
+                        <p style="position: absolute; top: 215px; left: 477px; width: 124px; font-size:16px; color: #000;">cm</p>
+        
+                        <p style="position: absolute; top: 195px; left: 572px; width: 124px; font-size:16px; color: #000;">h2:</p>
+                        <p id="rightCm" style="position: absolute; top: 215px; left: 563px; width: 124px; font-size:16px; color: #000;">35.00</p>
+                        <p style="position: absolute; top: 215px; left: 610px; width: 124px; font-size:16px; color: #000;">cm</p>
+        
+                        <p style="position: absolute; top: 401px; left: 529px; width: 124px; font-size:16px; color: #000;">Bed Height:</p>
+                        <p id="bedHght" style="position: absolute; top: 400px; left: 619px; width: 124px; font-size:16px; color: #000;">20.0</p>
+                        <p style="position: absolute; top: 401px; left: 655px; width: 124px; font-size:16px; color: #000;">cm</p>
+                    </div>
+        
+                    <!-- erinnn -->
+                    <button id="addtoTableButton" style="visibility: hidden; position: absolute; top: 449px;
+                    left: 378px;
+                    width: 176px; font-size:18px;">Add current readings</button>
+        
+                   
+                    <button onclick="displayExpValues()" id="experiButton" style="position: absolute; top: 479px; left: 378px; width: 176px; font-size:17px;">Experimental Data</button>
+        
+                    <!-- erin -->
+                    <button onclick="observeTable()" id="obserButton" style="position: absolute; top: 479px; left: 557px; width: 146px; font-size:18px;">Observations</button>
+                </div> </div>
+                <!-- erin -->
+                <div id="obcanvas" style="visibility: hidden;     position: absolute;
+                top: 51%; left: 48%;
+    width: 688px; height: 563px;background-color: hsl(180deg 63.38% 36.94%); border: 2px solid rgb(255, 255, 255); border-radius: 12px;margin-left: -337px;margin-top: -261px;    overflow-y: scroll;">
+                    <p style="z-index: 2000; position: absolute; top: -4px; left: 228px; width: 300px; font-size:30px; color: #fff;">Observations</p>
+                    <span class="close1" id="myClose1" onclick="mclose1()">&times;</span>
+                    <!-- erin -->
+                    <p id="noteremsel" style="z-index: 2000; position: absolute; top: 457px; left: 10px; width: 500px; font-size:19px; color: #fff;">Click on the rows which you want to delete </p>
+                    <!-- Observation table! -->
+                    <div class="fixTableHead">
+                    <table id="observeTable" style="z-index: 2000; overflow-y: scroll; font-size: 19px; position: absolute; visibility: hidden; border: 3px solid rgb(255, 255, 255);
+                    width: 671px;top: 50px; left: 7px; color: rgb(255, 255, 255);padding-bottom: 40px;">
+                        <!-- erin -->
+                        <thead id="head">
+                          <tr>
+                            <th>Process fluid</th>
+                            <th style="width: 119px;">Manometric fluid</th>
+                            <th>Flowrate (lpm)</th>
+                            <th>h1(cm of Manometric fluid)</th>
+                            <th>h2(cm of Manometric fluid)</th>
+                            <th>Bed Height(cm)</th>
+                        </tr>
+                        </thead>
+                    </table></div>
+                    <button onclick="remSelRead()" id="remSelRead" style="visibility: hidden; position: sticky; top: 513px; left: 2%; width: 36%; font-size: 18px; z-index: 2500; background-color: #fff;">Remove Selected Readings</button>
+                    <button onclick="remAllRead()" id="remAllRead" style="visibility: hidden; position: sticky; top: 513px; left: 39%; width:29%; font-size: 19px;z-index: 2500; background-color: #fff;">Clear All readings</button>
+                    <button onclick="emailSend()" id="emailTable" style="visibility: hidden; position: sticky; top: 513px; left: 70%; width: 29%; font-size: 19px; z-index: 2500; background-color: #fff; ">Email This Table</button>
+                    <!-- erin 08092021 -->
+                    <!-- Pop up to input receiver email ID -->
+                    <div id="emailSend" style="visibility: hidden; height: 100px; width: 300px; top: 200px; left: 202px; position: absolute; padding: 8px; background-color: rgb(255, 255, 255); color: black; z-index: 5000;border-radius:10px ">
+                        Email:
+                        <input id="emailR" type="email" onchange="setemail(this.value)" name="Email" size="20" required="true" ; pattern=".@.">
+        
+                        <!-- <input id="sendEmail" type="submit" name="Send" value=""> -->
+                        <button onclick="sendEmail()" id="sendEmail" style=" position: absolute; top: 8px; left: 230px; width: 70px; font-size: 13px;z-index: 5500; background-color: #fff; ">Send</button>
+                        <p id="emailreq" style="z-index: 7500; position: absolute; height: 20px; width: 300px; top: 50px; left: 10px; font-size: 15px; color: black; ">Email is required</p>
+                    </div>
+                    <!-- info store for mail body -->
+                    <p id="info" style="visibility: hidden;"></p>
+                </div>
+        
+                <!-- erinend -->
+                <div class="" id="displayExpValues" style="    visibility: hidden;
+                height: 433px;
+                width: 615px;
+                top: 55%;
+                left: 50%;
+                position: absolute;
+                background-color: rgb(61, 61, 61);
+                opacity: 0.8;
+                z-index: 1;
+                margin-left: -308px;
+                margin-top: -204px;">
+                  <span class="close" id="myClose" onclick="mclose()">&times;</span>
+                  <p style="position: absolute; top: 1px; left: 184px; width: 269px; font-size:30px; color: #fff;">Experimental Data</p>
+                  <p style="position: absolute; top: 60px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Length of Packed Bed:</p>
+                  <p id="oridia" style="position: absolute; top:60px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> meter(s)</p>
+                  <p style="position: absolute; top: 90px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Packing Material:</p>
+                  <p id="packmat" style="position: absolute; top: 90px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> </p>
+                  <p style="position: absolute; top: 120px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Nominal Pipe Diameter:</p>
+                  <p id="nompidia" style="position: absolute; top:120px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> inch</p>
+                  <p style="position: absolute; top: 150px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Actual Pipe Diameter:</p>
+                  <p id="acpidia" style="position: absolute; top: 150px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> cm</p>
+      
+                  <p style="position: absolute; top: 180px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Static Bed Height:</p>
+                  <p id="statbh" style="position: absolute; top:180px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> </p>
+                  <p style="position: absolute; top: 210px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Density of Glass Bead:</p>
+                  <p id="dglbead" style="position: absolute; top:210px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> Kg per Cubic meter</p>
+                  <p style="position: absolute; top: 240px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Void Volume:</p>
+                  <p id="voidvol" style="position: absolute; top:240px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> mL</p>
+      
+      
+                  <p style="position: absolute; top: 270px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Process Fluid:</p>
+                  <p id="prflu" style="position: absolute; top: 270px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"></p>
+                  <p style="position: absolute; top: 300px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Density of Process Fluid:</p>
+                  <p id="dprflu" style="position: absolute; top: 300px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> Kg per Cubic meter</p>
+                  <p style="position: absolute; top: 330px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Viscoscity of Process Fluid:</p>
+                  <p id="vprflu" style="position: absolute; top: 330px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"> centiPoise</p>
+                  <p style="position: absolute; top: 360px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Manometric Fluid:</p>
+                  <p id="mflu" style="position: absolute; top: 360px; left: 405px; width: 224px; font-size:15px; color:#39FF14;"></p>
+                  <p style="position: absolute; top: 390px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Density Manometric Fluid:</p>
+                  <p id="dmflu" style="position: absolute; top: 390px; left: 405px; width: 324px; font-size:15px; color:#39FF14;"> Kg per Cubic meter</p>
+              </div>
+        
+        
+                <p id="can4" style="position:absolute;top: 450px; left:28px;font-family:verdana; font-size:14px;"></p>
+                <p id="v4" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"> </p>
+                <div id="nav">
+                  <img id="nextButton" onclick="navNext(); " >
+              </div>
+            <!-- </div> -->
+            </div>
+            <div id="overflow" style="visibility: hidden; position: absolute; width: 800px; height: 542px;  left: 50%; top: 50%;  text-align: center; color: rgb(0, 0, 0);margin-left: -399px;
+            margin-top: -233px; background-color: rgb(211, 211, 211); opacity: 0.8;">
+              <p id="overflowMessage" style="position: absolute;top: 180px;left:100px;font-weight: bold;font-size: 30px;">Manometric Fluid is about to Overflow.<br> Change the Manometer to Mercury.</p>
+              <button id="okBtn" onclick="gotoExp()" style="position: absolute; top: 310px; left: 370px; background-color: black; color: white; visibility: hidden;width:100px;height:30px;font-size:15px;">Ok</button>
+          </div>
+      
+      
+
+            <!--Trial text	-->
+            <div id="">
+              <p id="trial" style="text-transform: uppercase;visibility :hidden;font-weight: bold;font-family:verdana; "><strong>Trial = </strong></p>
+          </div>
+          </div>
+          <div class="main__task-div footer">
+            <p class="copyright">Copyright © SOLVE The Virtual Lab @ NITK Surathkal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="../assets/js/iframeResize.js"></script></body>
+</html>
